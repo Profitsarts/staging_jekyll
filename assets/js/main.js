@@ -17,7 +17,7 @@ ANUBIS.subMenu = function(){
 		speed: 'fast',
 		autoArrows: false,
 		dropShadows: false
-	});	
+	});
 }
 
 /* ==================================================
@@ -28,7 +28,7 @@ var mobileMenuClone = $('#menu').clone().attr('id', 'navigation-mobile');
 
 ANUBIS.mobileNav = function(){
 	var windowWidth = $(window).width();
-	
+
 	// Show Menu or Hide the Menu
 	if( windowWidth <= 979 ) {
 		if( $('#mobile-nav').length > 0 ) {
@@ -38,18 +38,18 @@ ANUBIS.mobileNav = function(){
 	} else {
 		$('#navigation-mobile').css('display', 'none');
 		if ($('#mobile-nav').hasClass('open')) {
-			$('#mobile-nav').removeClass('open');	
+			$('#mobile-nav').removeClass('open');
 		}
 	}
 }
 
-// Call the Event for Menu 
+// Call the Event for Menu
 ANUBIS.listenerMenu = function(){
 	$('#mobile-nav').on('click', function(e){
 		$(this).toggleClass('open');
-		
+
 		$('#navigation-mobile').stop().slideToggle(350, 'easeOutExpo');
-		
+
 		e.preventDefault();
 	});
 }
@@ -119,7 +119,7 @@ ANUBIS.slider = function(){
 				shadow:0								//0 = no Shadow, 1,2,3 = 3 Different Art of Shadows -  (No Shadow in Fullwidth Version !)
 
 			});
-			
+
 			// Simple Slider
 			tpj('.sliderbanner').revolution(
 			{
@@ -181,12 +181,12 @@ ANUBIS.slider = function(){
 
 // Fix Hover on Touch Devices
 ANUBIS.utils = function(){
-	
+
 	$('.work-item-thumbs, .box, .post-thumb, .single-people, .item-project, .lightbox').bind('touchstart', function(){
 		$(".tapped").removeClass("tapped");
       	$(this).addClass('tapped');
     });
-	
+
 }
 
 
@@ -196,9 +196,9 @@ ANUBIS.utils = function(){
 ================================================== */
 
 ANUBIS.people = function (){
-	if($('#team-people').length > 0){		
+	if($('#team-people').length > 0){
 		var $container = $('#team-people');
-		
+
 		$container.imagesLoaded(function() {
 			$container.isotope({
 			  // options
@@ -207,12 +207,12 @@ ANUBIS.people = function (){
 			  layoutMode : 'fitRows'
 			});
 		});
-	
-		
+
+
 		// filter items when filter link is clicked
 		var $optionSets = $('#team-filter .option-set'),
 			$optionLinks = $optionSets.find('a');
-	
+
 		  $optionLinks.click(function(){
 			var $this = $(this);
 			// don't proceed if already selected
@@ -222,7 +222,7 @@ ANUBIS.people = function (){
 			var $optionSet = $this.parents('.option-set');
 			$optionSet.find('.selected').removeClass('selected');
 			$this.addClass('selected');
-	  
+
 			// make option object dynamically, i.e. { filter: '.my-filter-class' }
 			var options = {},
 				key = $optionSet.attr('data-option-key'),
@@ -237,7 +237,7 @@ ANUBIS.people = function (){
 			  // otherwise, apply new options
 			  $container.isotope( options );
 			}
-			
+
 			return false;
 		});
 	}
@@ -248,9 +248,9 @@ ANUBIS.people = function (){
 ================================================== */
 
 ANUBIS.portfolio = function (){
-	if($('#portfolio-projects').length > 0){		
+	if($('#portfolio-projects').length > 0){
 		var $container = $('#portfolio-projects');
-		
+
 		$container.imagesLoaded(function() {
 			$container.isotope({
 			  // options
@@ -259,12 +259,12 @@ ANUBIS.portfolio = function (){
 			  layoutMode : 'fitRows'
 			});
 		});
-	
-		
+
+
 		// filter items when filter link is clicked
 		var $optionSets = $('#portfolio-filter .option-set'),
 			$optionLinks = $optionSets.find('a');
-	
+
 		  $optionLinks.click(function(){
 			var $this = $(this);
 			// don't proceed if already selected
@@ -274,7 +274,7 @@ ANUBIS.portfolio = function (){
 			var $optionSet = $this.parents('.option-set');
 			$optionSet.find('.selected').removeClass('selected');
 			$this.addClass('selected');
-	  
+
 			// make option object dynamically, i.e. { filter: '.my-filter-class' }
 			var options = {},
 				key = $optionSet.attr('data-option-key'),
@@ -289,7 +289,7 @@ ANUBIS.portfolio = function (){
 			  // otherwise, apply new options
 			  $container.isotope( options );
 			}
-			
+
 			return false;
 		});
 	}
@@ -297,28 +297,28 @@ ANUBIS.portfolio = function (){
 
 
 /* ==================================================
-   DropDown 
+   DropDown
 ================================================== */
 
 ANUBIS.dropDown = function(){
 	$('.dropmenu').on('click', function(e){
 		$(this).toggleClass('open');
-		
+
 		$('.dropmenu-active').stop().slideToggle(350, 'easeOutExpo');
-		
+
 		e.preventDefault();
 	});
-	
+
 	$('.dropmenu-active a').on('click', function(e){
 		var dropdown = $(this).parents('.dropdown');
 		var selected = dropdown.find('.dropmenu .selected');
 		var newSelect = $(this).html();
-		
+
 		$('.dropmenu').removeClass('open');
 		$('.dropmenu-active').slideUp(350, 'easeOutExpo');
-		
+
 		selected.html(newSelect);
-		
+
 		e.preventDefault();
 	});
 }
@@ -330,14 +330,14 @@ ANUBIS.dropDown = function(){
 
 ANUBIS.fancyBox = function(){
 	if($('.fancybox').length > 0 || $('.fancybox-media').length > 0 || $('.fancybox-various').length > 0){
-		
-		$(".fancybox").fancybox({				
+
+		$(".fancybox").fancybox({
 			padding : 0,
 			helpers : {
 				title : { type: 'inside' },
 			}
 		});
-			
+
 		$('.fancybox-media').fancybox({
 			openEffect  : 'none',
 			closeEffect : 'none',
@@ -345,7 +345,7 @@ ANUBIS.fancyBox = function(){
 				media : {}
 			}
 		});
-		
+
 		$(".fancybox-various").fancybox({
 			maxWidth	: 800,
 			maxHeight	: 600,
@@ -359,37 +359,6 @@ ANUBIS.fancyBox = function(){
 		});
 	}
 }
-
-
-/* ==================================================
-   Contact Form
-================================================== */
-
-ANUBIS.contactForm = function(){
-	$("#contact-submit").on('click',function() {
-		$contact_form = $('#contact-form');
-		
-		var fields = $contact_form.serialize();
-		
-		$.ajax({
-			type: "POST",
-			url: "_include/php/contact.php",
-			data: fields,
-			dataType: 'json',
-			success: function(response) {
-				
-				if(response.status){
-					$('#contact-form input').val('');
-					$('#contact-form textarea').val('');
-				}
-				
-				$('#response').empty().html(response.html);
-			}
-		});
-		return false;
-	});
-}
-
 
 /* ==================================================
    Map
@@ -407,13 +376,13 @@ ANUBIS.map = function(){
 			$map_lon = $map.attr('data-mapLon');
 			$map_zoom = parseInt($map.attr('data-mapZoom'));
 			$map_title = $map.attr('data-mapTitle');
-			
-			
-			
-			var latlng = new google.maps.LatLng($map_lat, $map_lon);			
-			var options = { 
+
+
+
+			var latlng = new google.maps.LatLng($map_lat, $map_lon);
+			var options = {
 				scrollwheel: false,
-				draggable: false, 
+				draggable: false,
 				zoomControl: false,
 				disableDoubleClickZoom: false,
 				disableDefaultUI: true,
@@ -421,17 +390,17 @@ ANUBIS.map = function(){
 				center: latlng,
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			};
-			
-			var styles = [ 
+
+			var styles = [
 							{
 								// Insert Here Your Custom Style if you Want Colorize the Map
 							}
 						];
-			
+
 			var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
-			
+
 			var map = new google.maps.Map(document.getElementById($map_id), options);
-		
+
 			var image = '_include/img/map-marker.png';
 			var marker = new google.maps.Marker({
 				position: latlng,
@@ -439,22 +408,22 @@ ANUBIS.map = function(){
 				title: $map_title,
 				icon: image
 			});
-			
+
 			map.mapTypes.set('map_style', styledMap);
   			map.setMapTypeId('map_style');
-			
+
 			var contentString = '<p><strong>Company Name</strong><br>Address here</p>';
-       
+
 			var infowindow = new google.maps.InfoWindow({
 				content: contentString
 			});
-			
+
 			google.maps.event.addListener(marker, 'click', function() {
       			infowindow.open(map,marker);
     		});
 
 		});
-	}	
+	}
 }
 
 /* ==================================================
@@ -464,22 +433,22 @@ ANUBIS.map = function(){
 ANUBIS.flickr = function(){
 	// check if flickr_list exists
 	if($('.flickr-list').length > 0){
-		
+
 		// cycling all the flickr_list
 		$('.flickr-list').each(function(){
 			$count = $(this).attr('data-count'); // set photos counts by attribute data-count
-			
+
 			// append ul into flickr_list
 			$(this).html('<ul></ul>');
-			
+
 			$(this).find('ul').jflickrfeed({
 				limit: $count, // photos limit
 				itemTemplate: '<li><a href="{{link}}" title="{{title}}" target="_blank"><span class="overlay"></span><i class="font-icon-search"></i><img src="{{image_m}}" alt="{{title}}" title="{{title}}" /></a></li>', // list html template
 				qstrings: {
-					id: '52617155@N08' // your Flickr ID 
+					id: '52617155@N08' // your Flickr ID
 				}
 			});
-		}); 
+		});
 	}
 }
 
@@ -490,19 +459,19 @@ ANUBIS.flickr = function(){
 ANUBIS.twitter = function(){
 	// check if twitter_list exists
 	if($('.twitter-list').length > 0){
-		
-		// cycling all the twitter_list  
+
+		// cycling all the twitter_list
 		$(".twitter-list").each(function(){
 			$count = $(this).attr('data-count'); // set tweet counts by attribute data-count
-			
+
 			$(this).tweet({
 				join_text: '',
 				username: "Bluxart", // your Twitter ID
 				count: $count, // tweets limit
 				view_text: "View on Twitter" // alt text
-			});	
+			});
 		});
-	}	
+	}
 }
 
 /* ==================================================
@@ -511,15 +480,15 @@ ANUBIS.twitter = function(){
 
 ANUBIS.accordion = function(){
 	var accordion_trigger = $('.accordion-heading.accordionize');
-	
+
 	accordion_trigger.delegate('.accordion-toggle','click', function(e){
 		if($(this).hasClass('active')){
 			$(this).removeClass('active');
 		   	$(this).addClass('inactive');
 		}
 		else{
-		  	accordion_trigger.find('.active').addClass('inactive');          
-		  	accordion_trigger.find('.active').removeClass('active');   
+		  	accordion_trigger.find('.active').addClass('inactive');
+		  	accordion_trigger.find('.active').removeClass('active');
 		  	$(this).removeClass('inactive');
 		  	$(this).addClass('active');
 	 	}
@@ -533,7 +502,7 @@ ANUBIS.accordion = function(){
 
 ANUBIS.toggle = function(){
 	var accordion_trigger_toggle = $('.accordion-heading.togglize');
-	
+
 	accordion_trigger_toggle.delegate('.accordion-toggle','click', function(e){
 		if($(this).hasClass('active')){
 			$(this).removeClass('active');
@@ -552,7 +521,7 @@ ANUBIS.toggle = function(){
    Tooltip
 ================================================== */
 
-ANUBIS.toolTip = function(){ 
+ANUBIS.toolTip = function(){
     $('a[data-toggle=tooltip]').tooltip();
 }
 
@@ -594,28 +563,28 @@ ANUBIS.scrollToTop = function(){
 ================================================== */
 
 ANUBIS.getSize = function(){
-	
+
 	if($('#image-static .fullimage-container').length > 0){
 		$('#image-static .fullimage-container').each(function() {
-			
-			var img = $(this).find('img');	
-			
+
+			var img = $(this).find('img');
+
 			// Get on screen image
 			var screenImage = img;
-	
+
 			// Create new offscreen image to test
 			var theImage = new Image();
 			theImage.src = screenImage.attr("src");
-	
+
 			// Get accurate measurements from that.
 			var imageWidth = theImage.width;
 			var imageHeight = theImage.height;
-			
+
 			screenImage.attr('width', imageWidth);
 			screenImage.attr('height', imageHeight);
 		});
 	}
-	
+
 }
 
 ANUBIS.centerImg = function(){
@@ -630,7 +599,7 @@ ANUBIS.centerImg = function(){
 				vpAspectRatio,
 				newImgWidth,
 				newImgHeight = vpWidth / imgAspectRatio;
-		
+
 			if( vpWidth <= 660 ) {
 				vpHeight = 400;
 				newImgWidth = imgWidth * vpHeight / imgHeight;
@@ -641,9 +610,9 @@ ANUBIS.centerImg = function(){
 				vpHeight = 700;
 				newImgWidth = imgWidth * vpHeight / imgHeight;
 			}
-			
+
 			vpAspectRatio = vpWidth / vpHeight;
-									
+
 			if( vpAspectRatio <= imgAspectRatio ) {
 				img.css({
 					'margin-top': 0,
@@ -669,7 +638,7 @@ ANUBIS.centerImg = function(){
 
 ANUBIS.changeOpacity = function(){
 	var arrows = $('.fullwidthbanner-container .tparrows, .fullwidthbanner-container .tp-bullets');
-	
+
 	$(window).scroll(function(){
 		var st = $(this).scrollTop();
 		arrows.css({ 'opacity' : (1 - st/600) });
@@ -685,10 +654,10 @@ ANUBIS.slider();
 
 $(document).ready(function(){
 	ANUBIS.utils();
-	
+
 	ANUBIS.getSize();
 	ANUBIS.centerImg();
-	
+
 	ANUBIS.mobileNav();
 	ANUBIS.listenerMenu();
 	ANUBIS.subMenu();

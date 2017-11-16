@@ -1,1 +1,264 @@
-!function(e){"function"==typeof define&&define.amd?define(["jquery"],e):e(jQuery)}(function(e){e.fn.tweet=function(t){function r(e,t){if("string"==typeof e){var r=e;for(var a in t){var n=t[a];r=r.split("{"+a+"}").join(null===n?"":n)}return r}return e(t)}function a(t,r){return function(){var a=[];return this.each(function(){a.push(this.replace(t,r))}),e(a)}}function n(e){return e.replace(/</g,"&lt;").replace(/>/g,"^&gt;")}function i(e,t){return e.replace(m,function(e){for(var r=/^[a-z]+:/i.test(e)?e:"http://"+e,a=e,i=0;i<t.length;++i){var s=t[i];if(s.url==r&&s.expanded_url){r=s.expanded_url,a=s.display_url;break}}return'<a target="_blank" href="'+n(r)+'">'+n(a)+"</a>"})}function s(e){return Date.parse(e.replace(/^([a-z]{3})( [a-z]{3} \d\d?)(.*)( \d{4})$/i,"$1,$2$4$3"))}function u(e){var t=function(e){return parseInt(e,10)},r=new Date,a=t((r.getTime()-e)/1e3);return a<1&&(a=0),{days:t(a/86400),hours:t(a/3600),minutes:t(a/60),seconds:t(a)}}function _(e){return e.days>2?"about "+e.days+" days ago":e.hours>24?"about a day ago":e.hours>2?"about "+e.hours+" hours ago":e.minutes>45?"about an hour ago":e.minutes>2?"about "+e.minutes+" minutes ago":e.seconds>1?"about "+e.seconds+" seconds ago":"just now"}function o(e){return e.match(/^(@([A-Za-z0-9-_]+)) .*/i)?p.auto_join_text_reply:e.match(m)?p.auto_join_text_url:e.match(/^((\w+ed)|just) .*/im)?p.auto_join_text_ed:e.match(/^(\w*ing) .*/i)?p.auto_join_text_ing:p.auto_join_text_default}function l(){var e="https:"==document.location.protocol?"https:":"http:",t=null===p.fetch?p.count:p.fetch,r="&include_entities=1&callback=?";if(p.list)return e+"//"+p.twitter_api_url+"/1/"+p.username[0]+"/lists/"+p.list+"/statuses.json?page="+p.page+"&per_page="+t+r;if(p.favorites)return e+"//"+p.twitter_api_url+"/1/favorites.json?screen_name="+p.username[0]+"&page="+p.page+"&count="+t+r;if(null===p.query&&1==p.username.length)return e+"//"+p.twitter_api_url+"/1/statuses/user_timeline.json?screen_name="+p.username[0]+"&count="+t+(p.retweets?"&include_rts=1":"")+"&page="+p.page+r;var a=p.query||"from:"+p.username.join(" OR from:");return e+"//"+p.twitter_search_url+"/search.json?&q="+encodeURIComponent(a)+"&rpp="+t+"&page="+p.page+r}function c(e,t){return t?"user"in e?e.user.profile_image_url_https:c(e,!1).replace(/^http:\/\/[a-z0-9]{1,3}\.twimg\.com\//,"https://s3.amazonaws.com/twitter_production/"):e.profile_image_url||e.user.profile_image_url}function w(t){var a={};return a.item=t,a.source=t.source,a.screen_name=t.from_user||t.user.screen_name,a.name=t.from_user_name||t.user.name,a.retweet="undefined"!=typeof t.retweeted_status,a.tweet_time=s(t.created_at),a.join_text="auto"==p.join_text?o(t.text):p.join_text,a.tweet_id=t.id_str,a.twitter_base="http://"+p.twitter_url+"/",a.user_url=a.twitter_base+a.screen_name,a.tweet_url=a.user_url+"/status/"+a.tweet_id,a.reply_url=a.twitter_base+"intent/tweet?in_reply_to="+a.tweet_id,a.retweet_url=a.twitter_base+"intent/retweet?tweet_id="+a.tweet_id,a.favorite_url=a.twitter_base+"intent/favorite?tweet_id="+a.tweet_id,a.retweeted_screen_name=a.retweet&&t.retweeted_status.user.screen_name,a.tweet_relative_time=_(u(a.tweet_time)),a.entities=t.entities?(t.entities.urls||[]).concat(t.entities.media||[]):[],a.tweet_raw_text=a.retweet?"RT @"+a.retweeted_screen_name+" "+t.retweeted_status.text:t.text,a.tweet_text=e([i(a.tweet_raw_text,a.entities)]).linkUser().linkHash()[0],a.retweeted_tweet_text=e([i(t.text,a.entities)]).linkUser().linkHash()[0],a.tweet_text_fancy=e([a.tweet_text]).makeHeart()[0],a.avatar_size=p.avatar_size,a.avatar_url=c(a.retweet?t.retweeted_status:t,"index.html"===document.location.protocol),a.avatar_screen_name=a.retweet?a.retweeted_screen_name:a.screen_name,a.avatar_profile_url=a.twitter_base+a.avatar_screen_name,a.user=r('<a target="_blank" class="tweet_user" href="{user_url}">{screen_name}</a>',a),a.join=p.join_text?r('<span class="tweet_join">{join_text}</span>',a):"",a.avatar=a.avatar_size?r('<a target="_blank" class="tweet_avatar" href="{avatar_profile_url}"><img src="{avatar_url}" height="{avatar_size}" width="{avatar_size}" alt="{avatar_screen_name}\'s avatar" title="{avatar_screen_name}\'s avatar" border="0"/></a>',a):"",a.time=r('<span class="tweet_time">{tweet_relative_time}</span>',a),a.text=r('<span class="tweet_text">{tweet_text_fancy}</span>',a),a.retweeted_text=r('<span class="tweet_text">{retweeted_tweet_text}</span>',a),a.reply_action=r('<a target="_blank" class="tweet_action tweet_reply" href="{reply_url}">reply</a>',a),a.retweet_action=r('<a target="_blank" class="tweet_action tweet_retweet" href="{retweet_url}">retweet</a>',a),a.favorite_action=r('<a target="_blank" class="tweet_action tweet_favorite" href="{favorite_url}">favorite</a>',a),a}function d(t,a){var n=e('<ul class="tweet_list">');n.append(e.map(a,function(e){return"<li>"+r(p.template,e)+"</li>"}).join("")).children("li:first").addClass("tweet_first").end().children("li:odd").addClass("tweet_even").end().children("li:even").addClass("tweet_odd"),e(t).empty().append(n),p.intro_text&&n.before('<p class="tweet_intro">'+p.intro_text+"</p>"),p.outro_text&&n.after('<p class="tweet_outro">'+p.outro_text+"</p>"),e(t).trigger("loaded").trigger(0===a.length?"empty":"full"),p.refresh_interval&&window.setTimeout(function(){e(t).trigger("tweet:load")},1e3*p.refresh_interval)}function f(t){var r=e('<p class="loading">'+p.loading_text+"</p>");p.loading_text&&e(t).not(":has(.tweet_list)").empty().append(r),e.getJSON(l(),function(r){var a=e.map(r.results||r,w);a=e.grep(a,p.filter).sort(p.comparator).slice(0,p.count),e(t).trigger("tweet:retrieved",[a])})}var p=e.extend({username:null,list:null,favorites:!1,query:null,avatar_size:null,count:3,fetch:null,page:1,retweets:!0,intro_text:null,outro_text:null,join_text:null,auto_join_text_default:" I said, ",auto_join_text_ed:" I ",auto_join_text_ing:" I am ",auto_join_text_reply:" I replied to ",auto_join_text_url:" I was looking at ",loading_text:null,refresh_interval:null,twitter_url:"twitter.com",twitter_api_url:"api.twitter.com",twitter_search_url:"search.twitter.com",template:"{avatar}{join} {text} {time}",comparator:function(e,t){return t.tweet_time-e.tweet_time},filter:function(e){return!0}},t),m=/\b((?:https?:\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/gi;return e.extend({tweet:{t:r}}),e.fn.extend({linkUser:a(/(^|[\W])@(\w+)/gi,'$1<span class="at">@</span><a target="_blank" href="http://'+p.twitter_url+'/$2">$2</a>'),linkHash:a(/(?:^| )[\#]+([\w\u00c0-\u00d6\u00d8-\u00f6\u00f8-\u00ff\u0600-\u06ff]+)/gi,' <a target="_blank" href="http://'+p.twitter_search_url+"/search?q=&tag=$1&lang=all"+(p.username&&1==p.username.length&&!p.list?"&from="+p.username.join("%2BOR%2B"):"")+'" class="tweet_hashtag">#$1</a>'),makeHeart:a(/(&lt;)+[3]/gi,"<tt class='heart'>&#x2665;</tt>")}),this.each(function(t,r){p.username&&"string"==typeof p.username&&(p.username=[p.username]),e(r).unbind("tweet:render").unbind("tweet:retrieved").unbind("tweet:load").bind({"tweet:load":function(){f(r)},"tweet:retrieved":function(t,a){e(r).trigger("tweet:render",[a])},"tweet:render":function(t,a){d(e(r),a)}}).trigger("tweet:load")})}});
+// jquery.tweet.js - See http://tweet.seaofclouds.com/ or https://github.com/seaofclouds/tweet for more info
+// Copyright (c) 2008-2011 Todd Matthews & Steve Purcell
+(function (factory) {
+  if (typeof define === 'function' && define.amd)
+    define(['jquery'], factory); // AMD support for RequireJS etc.
+  else
+    factory(jQuery);
+}(function ($) {
+  $.fn.tweet = function(o){
+    var s = $.extend({
+      username: null,                           // [string or array] required unless using the 'query' option; one or more twitter screen names (use 'list' option for multiple names, where possible)
+      list: null,                               // [string]   optional name of list belonging to username
+      favorites: false,                         // [boolean]  display the user's favorites instead of his tweets
+      query: null,                              // [string]   optional search query (see also: http://search.twitter.com/operators)
+      avatar_size: null,                        // [integer]  height and width of avatar if displayed (48px max)
+      count: 3,                                 // [integer]  how many tweets to display?
+      fetch: null,                              // [integer]  how many tweets to fetch via the API (set this higher than 'count' if using the 'filter' option)
+      page: 1,                                  // [integer]  which page of results to fetch (if count != fetch, you'll get unexpected results)
+      retweets: true,                           // [boolean]  whether to fetch (official) retweets (not supported in all display modes)
+      intro_text: null,                         // [string]   do you want text BEFORE your your tweets?
+      outro_text: null,                         // [string]   do you want text AFTER your tweets?
+      join_text:  null,                         // [string]   optional text in between date and tweet, try setting to "auto"
+      auto_join_text_default: " I said, ",      // [string]   auto text for non verb: "I said" bullocks
+      auto_join_text_ed: " I ",                 // [string]   auto text for past tense: "I" surfed
+      auto_join_text_ing: " I am ",             // [string]   auto tense for present tense: "I was" surfing
+      auto_join_text_reply: " I replied to ",   // [string]   auto tense for replies: "I replied to" @someone "with"
+      auto_join_text_url: " I was looking at ", // [string]   auto tense for urls: "I was looking at" http:...
+      loading_text: null,                       // [string]   optional loading text, displayed while tweets load
+      refresh_interval: null,                   // [integer]  optional number of seconds after which to reload tweets
+      twitter_url: "twitter.com",               // [string]   custom twitter url, if any (apigee, etc.)
+      twitter_api_url: "api.twitter.com",       // [string]   custom twitter api url, if any (apigee, etc.)
+      twitter_search_url: "search.twitter.com", // [string]   custom twitter search url, if any (apigee, etc.)
+      template: "{avatar}{join} {text} {time}",  // [string or function] template used to construct each tweet <li> - see code for available vars
+      comparator: function(tweet1, tweet2) {    // [function] comparator used to sort tweets (see Array.sort)
+        return tweet2["tweet_time"] - tweet1["tweet_time"];
+      },
+      filter: function(tweet) {                 // [function] whether or not to include a particular tweet (be sure to also set 'fetch')
+        return true;
+      }
+      // You can attach callbacks to the following events using jQuery's standard .bind() mechanism:
+      //   "loaded" -- triggered when tweets have been fetched and rendered
+    }, o);
+
+    // See http://daringfireball.net/2010/07/improved_regex_for_matching_urls
+    var url_regexp = /\b((?:https?:\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/gi;
+
+    // Expand values inside simple string templates with {placeholders}
+    function t(template, info) {
+      if (typeof template === "string") {
+        var result = template;
+        for(var key in info) {
+          var val = info[key];
+          result = result.split('{'+key+'}').join(val === null ? '' : val);
+        }
+        return result;
+      } else return template(info);
+    }
+    // Export the t function for use when passing a function as the 'template' option
+    $.extend({tweet: {t: t}});
+
+    function replacer (regex, replacement) {
+      return function() {
+        var returning = [];
+        this.each(function() {
+          returning.push(this.replace(regex, replacement));
+        });
+        return $(returning);
+      };
+    }
+
+    function escapeHTML(s) {
+      return s.replace(/</g,"&lt;").replace(/>/g,"^&gt;");
+    }
+
+    $.fn.extend({
+      linkUser: replacer(/(^|[\W])@(\w+)/gi, "$1<span class=\"at\">@</span><a target=\"_blank\" href=\"http://"+s.twitter_url+"/$2\">$2</a>"),
+      // Support various latin1 (\u00**) and arabic (\u06**) alphanumeric chars
+      linkHash: replacer(/(?:^| )[\#]+([\w\u00c0-\u00d6\u00d8-\u00f6\u00f8-\u00ff\u0600-\u06ff]+)/gi,
+                         ' <a target=\"_blank\" href="http://'+s.twitter_search_url+'/search?q=&tag=$1&lang=all'+
+                         ((s.username && s.username.length == 1 && !s.list) ? '&from='+s.username.join("%2BOR%2B") : '')+
+                         '" class="tweet_hashtag">#$1</a>'),
+      makeHeart: replacer(/(&lt;)+[3]/gi, "<tt class='heart'>&#x2665;</tt>")
+    });
+
+    function linkURLs(text, entities) {
+      return text.replace(url_regexp, function(match) {
+        var url = (/^[a-z]+:/i).test(match) ? match : "http://"+match;
+        var text = match;
+        for(var i = 0; i < entities.length; ++i) {
+          var entity = entities[i];
+          if (entity.url == url && entity.expanded_url) {
+            url = entity.expanded_url;
+            text = entity.display_url;
+            break;
+          }
+        }
+        return "<a target=\"_blank\" href=\""+escapeHTML(url)+"\">"+escapeHTML(text)+"</a>";
+      });
+    }
+
+    function parse_date(date_str) {
+      // The non-search twitter APIs return inconsistently-formatted dates, which Date.parse
+      // cannot handle in IE. We therefore perform the following transformation:
+      // "Wed Apr 29 08:53:31 +0000 2009" => "Wed, Apr 29 2009 08:53:31 +0000"
+      return Date.parse(date_str.replace(/^([a-z]{3})( [a-z]{3} \d\d?)(.*)( \d{4})$/i, '$1,$2$4$3'));
+    }
+
+    function extract_relative_time(date) {
+      var toInt = function(val) { return parseInt(val, 10); };
+      var relative_to = new Date();
+      var delta = toInt((relative_to.getTime() - date) / 1000);
+      if (delta < 1) delta = 0;
+      return {
+        days:    toInt(delta / 86400),
+        hours:   toInt(delta / 3600),
+        minutes: toInt(delta / 60),
+        seconds: toInt(delta)
+      };
+    }
+
+    function format_relative_time(time_ago) {
+      if ( time_ago.days > 2 )     return 'about ' + time_ago.days + ' days ago';
+      if ( time_ago.hours > 24 )   return 'about a day ago';
+      if ( time_ago.hours > 2 )    return 'about ' + time_ago.hours + ' hours ago';
+      if ( time_ago.minutes > 45 ) return 'about an hour ago';
+      if ( time_ago.minutes > 2 )  return 'about ' + time_ago.minutes + ' minutes ago';
+      if ( time_ago.seconds > 1 )  return 'about ' + time_ago.seconds + ' seconds ago';
+      return 'just now';
+    }
+
+    function build_auto_join_text(text) {
+      if (text.match(/^(@([A-Za-z0-9-_]+)) .*/i)) {
+        return s.auto_join_text_reply;
+      } else if (text.match(url_regexp)) {
+        return s.auto_join_text_url;
+      } else if (text.match(/^((\w+ed)|just) .*/im)) {
+        return s.auto_join_text_ed;
+      } else if (text.match(/^(\w*ing) .*/i)) {
+        return s.auto_join_text_ing;
+      } else {
+        return s.auto_join_text_default;
+      }
+    }
+
+    function build_api_url() {
+      var proto = ('https:' == document.location.protocol ? 'https:' : 'http:');
+      var count = (s.fetch === null) ? s.count : s.fetch;
+      var common_params = '&include_entities=1&callback=?';
+      if (s.list) {
+        return proto+"//"+s.twitter_api_url+"/1/"+s.username[0]+"/lists/"+s.list+"/statuses.json?page="+s.page+"&per_page="+count+common_params;
+      } else if (s.favorites) {
+        return proto+"//"+s.twitter_api_url+"/1/favorites.json?screen_name="+s.username[0]+"&page="+s.page+"&count="+count+common_params;
+      } else if (s.query === null && s.username.length == 1) {
+        return proto+'//'+s.twitter_api_url+'/1/statuses/user_timeline.json?screen_name='+s.username[0]+'&count='+count+(s.retweets ? '&include_rts=1' : '')+'&page='+s.page+common_params;
+      } else {
+        var query = (s.query || 'from:'+s.username.join(' OR from:'));
+        return proto+'//'+s.twitter_search_url+'/search.json?&q='+encodeURIComponent(query)+'&rpp='+count+'&page='+s.page+common_params;
+      }
+    }
+
+    function extract_avatar_url(item, secure) {
+      if (secure) {
+        return ('user' in item) ?
+          item.user.profile_image_url_https :
+          extract_avatar_url(item, false).
+            replace(/^http:\/\/[a-z0-9]{1,3}\.twimg\.com\//, "https://s3.amazonaws.com/twitter_production/");
+      } else {
+        return item.profile_image_url || item.user.profile_image_url;
+      }
+    }
+
+    // Convert twitter API objects into data available for
+    // constructing each tweet <li> using a template
+    function extract_template_data(item){
+      var o = {};
+      o.item = item;
+      o.source = item.source;
+      o.screen_name = item.from_user || item.user.screen_name;
+      // The actual user name is not returned by all Twitter APIs, so please do not
+      // file an issue if it is empty:
+      o.name = item.from_user_name || item.user.name;
+      o.retweet = typeof(item.retweeted_status) != 'undefined';
+
+      o.tweet_time = parse_date(item.created_at);
+      o.join_text = s.join_text == "auto" ? build_auto_join_text(item.text) : s.join_text;
+      o.tweet_id = item.id_str;
+      o.twitter_base = "http://"+s.twitter_url+"/";
+      o.user_url = o.twitter_base+o.screen_name;
+      o.tweet_url = o.user_url+"/status/"+o.tweet_id;
+      o.reply_url = o.twitter_base+"intent/tweet?in_reply_to="+o.tweet_id;
+      o.retweet_url = o.twitter_base+"intent/retweet?tweet_id="+o.tweet_id;
+      o.favorite_url = o.twitter_base+"intent/favorite?tweet_id="+o.tweet_id;
+      o.retweeted_screen_name = o.retweet && item.retweeted_status.user.screen_name;
+      o.tweet_relative_time = format_relative_time(extract_relative_time(o.tweet_time));
+      o.entities = item.entities ? (item.entities.urls || []).concat(item.entities.media || []) : [];
+      o.tweet_raw_text = o.retweet ? ('RT @'+o.retweeted_screen_name+' '+item.retweeted_status.text) : item.text; // avoid '...' in long retweets
+      o.tweet_text = $([linkURLs(o.tweet_raw_text, o.entities)]).linkUser().linkHash()[0];
+      o.retweeted_tweet_text = $([linkURLs(item.text, o.entities)]).linkUser().linkHash()[0];
+      o.tweet_text_fancy = $([o.tweet_text]).makeHeart()[0];
+
+      o.avatar_size = s.avatar_size;
+      o.avatar_url = extract_avatar_url(o.retweet ? item.retweeted_status : item, (document.location.protocol === 'index.html'));
+      o.avatar_screen_name = o.retweet ? o.retweeted_screen_name : o.screen_name;
+      o.avatar_profile_url = o.twitter_base+o.avatar_screen_name;
+
+      // Default spans, and pre-formatted blocks for common layouts
+      o.user = t('<a target="_blank" class="tweet_user" href="{user_url}">{screen_name}</a>', o);
+      o.join = s.join_text ? t('<span class="tweet_join">{join_text}</span>', o) : '';
+      o.avatar = o.avatar_size ?
+        t('<a target="_blank" class="tweet_avatar" href="{avatar_profile_url}"><img src="{avatar_url}" height="{avatar_size}" width="{avatar_size}" alt="{avatar_screen_name}\'s avatar" title="{avatar_screen_name}\'s avatar" border="0"/></a>', o) : '';
+      o.time = t('<span class="tweet_time">{tweet_relative_time}</span>', o);
+      o.text = t('<span class="tweet_text">{tweet_text_fancy}</span>', o);
+      o.retweeted_text = t('<span class="tweet_text">{retweeted_tweet_text}</span>', o);
+      o.reply_action = t('<a target="_blank" class="tweet_action tweet_reply" href="{reply_url}">reply</a>', o);
+      o.retweet_action = t('<a target="_blank" class="tweet_action tweet_retweet" href="{retweet_url}">retweet</a>', o);
+      o.favorite_action = t('<a target="_blank" class="tweet_action tweet_favorite" href="{favorite_url}">favorite</a>', o);
+      return o;
+    }
+
+    function render_tweets(widget, tweets) {
+      var list = $('<ul class="tweet_list">');
+      list.append($.map(tweets, function(o) { return "<li>" + t(s.template, o) + "</li>"; }).join('')).
+        children('li:first').addClass('tweet_first').end().
+        children('li:odd').addClass('tweet_even').end().
+        children('li:even').addClass('tweet_odd');
+
+      $(widget).empty().append(list);
+      if (s.intro_text) list.before('<p class="tweet_intro">'+s.intro_text+'</p>');
+      if (s.outro_text) list.after('<p class="tweet_outro">'+s.outro_text+'</p>');
+
+      $(widget).trigger("loaded").trigger((tweets.length === 0 ? "empty" : "full"));
+      if (s.refresh_interval) {
+        window.setTimeout(function() { $(widget).trigger("tweet:load"); }, 1000 * s.refresh_interval);
+      }
+    }
+
+    function load(widget) {
+      var loading = $('<p class="loading">'+s.loading_text+'</p>');
+      if (s.loading_text) $(widget).not(":has(.tweet_list)").empty().append(loading);
+      $.getJSON(build_api_url(), function(data){
+        var tweets = $.map(data.results || data, extract_template_data);
+        tweets = $.grep(tweets, s.filter).sort(s.comparator).slice(0, s.count);
+        $(widget).trigger("tweet:retrieved", [tweets]);
+      });
+    }
+
+    return this.each(function(i, widget){
+      if(s.username && typeof(s.username) == "string"){
+        s.username = [s.username];
+      }
+
+      $(widget).unbind("tweet:render").unbind("tweet:retrieved").unbind("tweet:load").
+        bind({
+          "tweet:load": function() { load(widget); },
+          "tweet:retrieved": function(ev, tweets) {
+            $(widget).trigger("tweet:render", [tweets])
+          },
+          "tweet:render": function(ev, tweets) {
+            render_tweets($(widget), tweets);
+          }
+        }).trigger("tweet:load");
+    });
+  };
+}));

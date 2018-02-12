@@ -1,0 +1,30 @@
+# Site settings
+title: Profits | arts'n'grafx
+email: profitsarts@gmail.com
+description:  # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://profitsarts.com" # the base hostname & protocol for your site
+twitter_username: _condres
+github_username:  profitsarts
+collections:
+    works:
+        output: true
+        permalink: /works/:path/
+# include: ["_works"]
+
+# sass:
+#     sass_dir: _sass
+#     sourcemap: true
+#     style: compact
+#     include:
+#         _sass_partial.scss
+
+exclude: ["node_modules", "gulpfile.js", "package.json"]
+# keep_files: ['_site/assets/']
+# Build settings
+markdown: kramdown
+# permalink: /:title/
+# permalink: pretty

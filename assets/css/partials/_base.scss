@@ -127,7 +127,7 @@ nav#menu {
   border-top: 1px dotted $gris-dot;
   border-bottom: 1px dotted $gris-dot;
   @include breakpoint(lg) {
-    margin: 0 auto 20px !important;
+    // margin: 0 auto 20px !important;
     float: none !important;
     width: 216px;
     padding: 0;

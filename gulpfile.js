@@ -84,6 +84,7 @@ gulp.task('sass-rebuild', function() {
     .pipe(postcss(plugins))
     .pipe(sourcemaps.write('.'))
     // .pipe(gulp.dest('_site/assets/css/'))
+    //LA anterior linea hacía que compilara el sass a _site en lugar de a assets y al ser _site compilada automaticamente nunca teníamos el nuevo css subido.
     .pipe(gulp.dest('assets/css/'))
     .pipe(browserSync.reload({
       stream: true

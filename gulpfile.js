@@ -83,7 +83,8 @@ gulp.task('sass-rebuild', function() {
     .pipe(sourcemaps.init())
     .pipe(postcss(plugins))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('_site/assets/css/'))
+    // .pipe(gulp.dest('_site/assets/css/'))
+    .pipe(gulp.dest('assets/css/'))
     .pipe(browserSync.reload({
       stream: true
 

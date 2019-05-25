@@ -4,7 +4,7 @@ email: profitsarts@gmail.com
 description:  # this means to ignore newlines until "baseurl:"
   Functional and tasty designs. UX/UI, Web, Print, Layout... You name it... You bet!
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://profitsarts.com/staging" # the base hostname & protocol for your site
+url: "http://staging.profitsarts.com/" # the base hostname & protocol for your site
 twitter_username: _condres
 github_username:  profitsarts
 collections:

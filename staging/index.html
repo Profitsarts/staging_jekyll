@@ -1,0 +1,145 @@
+---
+layout: default
+show_portfolio: false
+---
+<!-- Start Slider -->
+<section id="slider">
+  <div class="fullwidthbanner-container">
+    <div class="fullwidthbanner">
+
+      <ul>
+        <!-- THE ZERO SLIDE -->
+        <li data-transition="random" data-slotamount="1" data-masterspeed="300">
+          <img src="assets/img/slider-images/image-00.jpg" data-rjs="2" alt="Image" data-fullwidthcentering="on">
+
+        <!-- THE FIRST SLIDE -->
+        <li data-transition="random" data-slotamount="1" data-masterspeed="300">
+          <img src="assets/img/slider-images/image-01.jpg" data-rjs="2" alt="Image" data-fullwidthcentering="on">
+
+          <!-- THE SECOND SLIDE -->
+          <li data-transition="random" data-slotamount="1" data-masterspeed="300">
+            <img src="assets/img/slider-images/image-02.jpg" data-rjs="2" alt="Image" data-fullwidthcentering="on">
+          </li>
+
+          <!-- THE THIRD SLIDE -->
+          <li data-transition="random" data-slotamount="1" data-masterspeed="300">
+            <img src="assets/img/slider-images/image-03.jpg" data-rjs="2" alt="Image" data-fullwidthcentering="on">
+
+          </li>
+          <!-- THE FOURTH SLIDE -->
+          <li data-transition="random" data-slotamount="1" data-masterspeed="300">
+            <img src="assets/img/slider-images/image-04.jpg" data-rjs="2" alt="Image" data-fullwidthcentering="on">
+
+            <!-- <div class="caption very_big_custom_text sft"
+                         data-x="center"
+                         data-y="290"
+                         data-speed="300"
+                         data-start="500"
+                         data-easing="easeOutExpo" data-end="8400" data-endspeed="300" data-endeasing="easeInSine" >BE CREATIVE</div>
+
+                    <div class="caption custom_text sft"
+                         data-x="center"
+                         data-y="360"
+                         data-speed="300"
+                         data-start="800"
+                         data-easing="easeOutExpo" data-end="8600" data-endspeed="300" data-endeasing="easeInSine" >...AND ANIMATE ANYTHING YOU WANT!</div> -->
+          </li>
+          <!-- THE FIFTH SLIDE -->
+          <li data-transition="random" data-slotamount="1" data-masterspeed="300">
+            <img src="assets/img/slider-images/image-08.jpg" data-rjs="2" alt="Image" data-fullwidthcentering="on">
+
+          </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- End Slider -->
+
+<!-- Start See Divider -->
+<div class="portfolio-over_divider">
+  <div class="container">
+    <div class="row">
+      <div class="span12 see_divider">
+        <div id="see" class="see_title">
+          <h1>SEE</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End See Divider -->
+
+<!-- Start Section Portfolio Filter -->
+
+{% include 01-portfolio-filter.html %}
+
+<!-- End Section Portfolio Filter -->
+
+<!-- Start Section Portfolio Projects -->
+
+{% include 02-portfolio-projects.html %}
+
+<!-- End Section Portfolio Projects -->
+
+<!-- Start Touch Divider -->
+<div class="portfolio-under_divider">
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <div id="contact" class="touch_title">
+          <h1>TOUCH</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Touch Divider -->
+
+<!-- Contact Section -->
+<section id="contact">
+  <div class="container">
+    <!-- Contact Form -->
+    <div class="row contact-margin-bottom">
+      <!-- Contact Details -->
+      <div class="span3">
+        <div class="contact-details">
+
+          <ul>
+            <li>
+              <h4>Contact Details</h4>
+            </li>
+            <li>
+              <h3>Profits Arts'n'Grafx</h3>
+            </li>
+            <li><a href="mailto:profitsarts@gmail.com" title="email me">profitsarts@gmail.com</a></li>
+            <li>0034 656 559 570</li>
+          </ul>
+        </div>
+      </div>
+      <!-- End Contact Details -->
+      <div class="span9">
+        <h4 class="keepTouch">Let's keep in touch</h4>
+        <form id="contact-form" class="contact-form" action="//formspree.io/profitsarts@gmail.com" method="POST">
+          <p class="contact-name">
+            <input id="contact_name" type="text" placeholder="Full Name" value="" name="name" />
+          </p>
+          <p class="contact-email">
+            <input id="contact_email" type="text" placeholder="Email Address" value="" name="_replyto" />
+          </p>
+          <p class="contact-message">
+            <textarea id="contact_message" placeholder="Your Message" name="message" rows="15" cols="40"></textarea>
+          </p>
+          <p class="contact-submit">
+            <button type="submit" class="submit" name="button">Send Your Email</button>
+          </p>
+          <div id="response">
+            <input type="text" name="_gotcha" style="display:none">
+          </div>
+        </form>
+
+      </div>
+    </div>
+    <!-- End Contact Form -->
+  </div>
+</section>
+<!-- End Contact Section -->

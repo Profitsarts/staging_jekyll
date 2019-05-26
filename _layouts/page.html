@@ -20,7 +20,12 @@ inner_path: true
                                 <li data-transition="fade" data-slotamount="1" data-masterspeed="300">
                                     <img class="projectSlider" src="{{ page.image_path }}{{image.name}}
                                     " data-rjs="2" alt="{{ image.text }}" data-fullwidthcentering="on">
-                                    {% include youtubePlayer.html id=page.youtubeId %}
+
+                                    {% if page.embed %}
+
+                                      <!-- {% include youtubePlayer.html id=page.youtubeId %} -->
+                                    {% endif %}
+
                                 </li>
                                 {% endfor %}
                             </ul>
@@ -38,6 +43,10 @@ inner_path: true
                 <p>{{ page.p }}</p>
                 {% if page.urlink %}
                 <p><a href="{{ page.urlink }}" target="_blank">{{ page.urlink | remove:'http://' }}</a></p>
+                {% endif %}
+
+                {% if page.embed %}
+                <p><a href="{{ page.yt }}" target="_blank">{{ page.embed }}</a></p>
                 {% endif %}
             </div>
         </div>

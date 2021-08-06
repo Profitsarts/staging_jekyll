@@ -46,7 +46,12 @@ inner_path: true
                 {% endif %}
 
                 {% if page.embed %}
-                <p><a href="{{ page.yt }}" target="_blank">{{ page.embed }}</a></p>
+                <!-- <p><a href="{{ page.yt }}" target="_blank">{{ page.embed }}</a></p> -->
+                {% include youtubePlayer.html id=page.youtubeId %}
+
+
+
+
                 {% endif %}
             </div>
         </div>

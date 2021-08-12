@@ -20,6 +20,12 @@ inner_path: true
                                 <li data-transition="fade" data-slotamount="1" data-masterspeed="300">
                                     <img class="projectSlider" src="{{ page.image_path }}{{image.name}}
                                     " data-rjs="2" alt="{{ image.text }}" data-fullwidthcentering="on">
+
+                                    {% if page.embed %}
+
+                                      <!-- {% include youtubePlayer.html id=page.youtubeId %} -->
+                                    {% endif %}
+
                                 </li>
                                 {% endfor %}
                             </ul>
@@ -33,29 +39,23 @@ inner_path: true
         <!-- Start Work Info -->
         <div class="row">
             <div class="span12">
-                <h2>{{ page.big_title }}</h2>
+                <h3>{{ page.big_title }}</h3>
                 <p>{{ page.p }}</p>
-
-                {% if page.my_variable %}
-                  {% include {{ page.my_variable }} %}
-                {% endif %}
-
                 {% if page.urlink %}
                 <p><a href="{{ page.urlink }}" target="_blank">{{ page.urlink | remove:'http://' }}</a></p>
                 {% endif %}
 
-
                 {% if page.embed %}
                 <!-- <p><a href="{{ page.yt }}" target="_blank">{{ page.embed }}</a></p> -->
                 {% include youtubePlayer.html id=page.youtubeId %}
+
+
+
+
                 {% endif %}
             </div>
         </div>
         <!-- End Work Info -->
-
-        <!-- Start Case info -->
-
-        <!-- End Case info -->
 
         <!-- Start Navigation -->
         <div class="row singleSliderNav">

@@ -30,7 +30,7 @@ html {
 body {
   font-family: ITCAVANTGARDEGOTHICLTMEDIUM;
   font-weight: normal;
-  background: $pink;
+  background: $soft-pink;
 }
 /* ==================================================
    HEADER
@@ -281,37 +281,58 @@ iframe {
    DIVIDERS
 ================================================== */
 //SEE & TOUCH DIVIDERS HORIZONTAL MARGIN SETTINGS//
-.portfolio-over_divider,
-.portfolio-under_divider {
+
+.portfolio-over_divider, .portfolio-under_divider  {
   background-color: $gris-anubis;
   margin-left: -20px;
   margin-right: 0;
+  margin-bottom: 60px;
+  margin-top: 20px;
   @include breakpoint(md) {
+    margin-bottom: 30px;
+    margin-top: 16px;
+
     margin-right: 0;
   }
   @include breakpoint(sm) {
+    margin-bottom: 25px;
+    margin-top: 16px;
+
     margin-right: -20px;
   }
   @include breakpoint(xs) {
+    margin-bottom: 20px;
+    margin-top: 14px;
+
     margin-right: -20px;
   }
 }
-.portfolio-over_divider {
-  margin-bottom: 30px;
+.overview-over_divider {
+  background-color: $gris-anubis;
+  margin-left: -20px;
+  margin-right: 0;
+  margin-bottom: 60px;
   margin-top: 30px;
   @include breakpoint(md) {
     margin-bottom: 30px;
-    margin-top: 30px;
+    margin-top: 15px;
+
+    margin-right: 0;
   }
   @include breakpoint(sm) {
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin-bottom: 25px;
+    margin-top: 12px;
+
+    margin-right: -20px;
   }
   @include breakpoint(xs) {
     margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
+
+    margin-right: -20px;
   }
 }
+
 .portfolio-under_divider {
   @include breakpoint(xl) {
     margin-bottom: 30px;
@@ -332,6 +353,7 @@ iframe {
     margin-bottom: 18px;
   }
 }
+// see-over_divider
 .see_title,
 .touch_title {
   h1 {
@@ -340,19 +362,19 @@ iframe {
     margin: 0;
     padding: 0.9em 0;
     font-family: 'Museo Slab';
-    font-size: 3.4em;
+    font-size: 2em;
     text-align: center;
     @include breakpoint(md) {
       padding: 0.8em 0;
-      font-size: 3em;
+      font-size: 1.8em;
     }
     @include breakpoint(sm) {
       padding: 0.8em 0;
-      font-size: 2.2em;
+      font-size: 1.6em;
     }
     @include breakpoint(xs) {
       padding: 0.65em 0;
-      font-size: 1.8em;
+      font-size: 1.4em;
     }
   }
 }
@@ -626,6 +648,15 @@ Material Design Card styles
 #portfolio-content {
   background-color: $grad01;
   margin-bottom: 0;
+  h2 {
+    font-size: 2rem;
+    color: $gris-anubis;
+    font-family: $museo;
+    font-weight: normal;
+    line-height: 1.5em;
+    margin: 0 0 10px;
+  }
+
   h3 {
     color: $gris-anubis;
     font-family: $museo;
@@ -636,17 +667,55 @@ Material Design Card styles
       font-size: 16px;
     }
   }
+  .work-def {
+    color: $negro !important;
+    font-family: $museo;
+    font-size: 1em;
+    line-height: 1.5rem;
+    vertical-align: baseline;
+    letter-spacing: 0.4px;
+    word-spacing: 0px;
+    font-weight: 400;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-decoration: rgb(41, 41, 41);
+    text-align: start;
+    text-indent: 0px;
+  }
+
+  h4 {
+    color: black;
+    font-family: $museo;
+    font-size: 20px;
+    font-weight: lighter;
+    margin-bottom: 0;
+    @include breakpoint(xs) {
+      font-size: 16px;
+    }
+  }
+  h5 {
+    color: black;
+    font-family: $museo;
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    @include breakpoint(xs) {
+      font-size: 16px;
+    }
+  }
+
   p {
     color: $verde;
-    font-size: 14px;
+    font-size: 1.2em;
     font-weight: lighter;
     margin-bottom: 2px !important;
     @include breakpoint(xs) {
-      font-size: 12px;
+      font-size: 14px;
     }
     a {
       color: $gris-anubis;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 500;
       &:hover {
         color: $blanco;
@@ -681,7 +750,7 @@ img.projectSlider.defaultimg {
   a {
     background-attachment: scroll;
     background-clip: border-box;
-    background-color: $blanco;
+    background-color: $perla;
     background-image: none;
     background-origin: padding-box;
     background-position: 0 0;

@@ -36,8 +36,8 @@ inner_path: true
                 <h2>{{ page.big_title }}</h2>
                 <p>{{ page.p }}</p>
 
-                {% if page.my_variable %}
-                  {% include {{ page.my_variable }} %}
+                {% if page.var %}
+                  {% include {{ page.var }} %}
                 {% endif %}
 
                 {% if page.urlink %}

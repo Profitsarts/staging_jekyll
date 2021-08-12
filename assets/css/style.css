@@ -27,19 +27,16 @@ a:hover {
   opacity: 1;
   filter: alpha(opacity=100); }
 
-html {
-  background: linear-gradient(13deg, #d1ebdf, #e2e9f5); }
-
 body {
   font-family: ITCAVANTGARDEGOTHICLTMEDIUM;
   font-weight: normal;
-  background: #fff5f9; }
+  background: #f8f8f8; }
 
 /* ==================================================
    HEADER
 ================================================== */
 header {
-  background: #fff5f9;
+  background: #f8f8f8;
   position: static !important;
   overflow: hidden !important;
   width: 100%;

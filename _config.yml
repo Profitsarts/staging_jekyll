@@ -1,4 +1,9 @@
 # Site settings
+atom:
+  buildCommand:
+    - jekyll
+    - build
+    - --livereload
 title: Profits | arts'n'grafx
 email: profitsarts@gmail.com
 description:  # this means to ignore newlines until "baseurl:"

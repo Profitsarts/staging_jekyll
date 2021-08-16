@@ -1041,6 +1041,20 @@ Material Design Card styles
       font-weight: 500; }
       #portfolio-content p a:hover {
         color: #f8f8f8; }
+  #portfolio-content .link {
+    color: #2A2A2A;
+    font-size: 1em;
+    font-weight: lighter;
+    margin-bottom: 2px !important; }
+    @media (min-width: 320px) and (max-width: 575px) {
+      #portfolio-content .link {
+        font-size: 14px; } }
+    #portfolio-content .link a {
+      color: #323A45;
+      font-size: 14px;
+      font-weight: 500; }
+      #portfolio-content .link a:hover {
+        color: #f8f8f8; }
 
 .singleSlider {
   margin-top: 20px;

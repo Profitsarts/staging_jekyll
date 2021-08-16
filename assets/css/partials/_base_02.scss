@@ -172,7 +172,24 @@ Material Design Card styles
       }
     }
   }
-}
+  .link {
+      color: $negro;
+      font-size: 1em;
+      font-weight: lighter;
+      margin-bottom: 2px !important;
+      @include breakpoint(xs) {
+        font-size: 14px;
+      }
+      a {
+        color: $gris-anubis;
+        font-size: 14px;
+        font-weight: 500;
+        &:hover {
+          color: $blanco;
+        }
+      }
+    }
+  }
 .singleSlider {
   margin-top: 20px;
   margin-bottom: 20px;

@@ -150,6 +150,7 @@ Material Design Card styles
     font-size: 18px;
     font-weight: 800;
     margin-bottom: 10px;
+    margin-top:  1.5em;
     @include breakpoint(xs) {
       font-size: 16px;
     }
@@ -172,7 +173,7 @@ Material Design Card styles
       }
     }
   }
-  .link {
+   .link {
       color: $negro;
       font-size: 1em;
       font-weight: lighter;
@@ -182,10 +183,10 @@ Material Design Card styles
       }
       a {
         color: $gris-anubis;
-        font-size: 14px;
+        font-size: 1em;
         font-weight: 500;
         &:hover {
-          color: $blanco;
+          color: $verde;
         }
       }
     }

@@ -646,6 +646,7 @@ Material Design Card styles
 /* ==================================================
    Single Page Portfolio Projects
 ================================================== */
+
 #portfolio-content {
   background-color: $grad01;
   margin-bottom: 0;
@@ -671,18 +672,47 @@ Material Design Card styles
   .work-def {
     color: $negro !important;
     font-family: $museo;
-    font-size: 1em;
-    line-height: 1.5rem;
+    font-size: 1.2em;
+    line-height: 1.9em;
     vertical-align: baseline;
     letter-spacing: 0.4px;
     word-spacing: 0px;
-    font-weight: 400;
+    font-weight: lighter;
     font-style: normal;
     font-variant: normal;
     text-transform: none;
     text-decoration: rgb(41, 41, 41);
     text-align: start;
     text-indent: 0px;
+    @include breakpoint(xs) {
+      font-size: 0.9em;
+      line-height: 1.8em;
+    }
+    @include breakpoint(sm) {
+      font-size: 1em;
+      line-height: 1.8em;
+    }
+  }
+  .work-def-sm {
+    color: $negro !important;
+    font-family: $museo;
+    font-size: 1.1em;
+    line-height: 1.8rem;
+    vertical-align: baseline;
+    letter-spacing: 0.4px;
+    word-spacing: 0px;
+    font-weight: lighter;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-decoration: rgb(41, 41, 41);
+    text-align: start;
+    text-indent: 0px;
+  }
+
+  .advice {
+    @extend .work-def;
+    color: $salmon !important;
   }
 
   h4 {
@@ -698,11 +728,13 @@ Material Design Card styles
   h5 {
     color: black;
     font-family: $museo;
-    font-size: 18px;
+    font-size: 1.4em;
     font-weight: 800;
     margin-bottom: 10px;
+    margin-top:  1.5em;
     @include breakpoint(xs) {
       font-size: 16px;
+      margin-top: 0px;
     }
   }
 
@@ -722,8 +754,33 @@ Material Design Card styles
         color: $blanco;
       }
     }
+    @include breakpoint(sm) {
+      font-size: 1em;
+      line-height: 1.8em;
+    }
+    @include breakpoint(xs) {
+      font-size: 0.9em;
+      line-height: 1.8em;
+    }
   }
-}
+   .link {
+      color: $negro;
+      font-size: 1em;
+      font-weight: lighter;
+      margin-bottom: 2px !important;
+      @include breakpoint(xs) {
+        font-size: 14px;
+      }
+      a {
+        color: $salmon;
+        font-size: 1em;
+        font-weight: 500;
+        &:hover {
+          color: $gris-anubis;
+        }
+      }
+    }
+  }
 .singleSlider {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -733,11 +790,23 @@ Material Design Card styles
 }
 img.projectSlider.defaultimg {
   // object-fit: contain !important;
-  height: auto !important;
-  width: auto !important;
+  height: 100% !important;
+  width: 100% !important;
   // display: none;
-  left: 0;
+  left: 0 !important;
 }
+
+// image separation
+.psep {
+  margin-bottom: 2rem;
+  margin-top: 1rem !important;
+}
+.sep {
+  margin-bottom: 1rem;
+  margin-top: 2rem !important;
+}
+
+
 .singleSliderNav {
   margin-bottom: 20px;
 }

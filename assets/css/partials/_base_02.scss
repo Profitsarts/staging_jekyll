@@ -133,6 +133,14 @@ Material Design Card styles
     text-decoration: rgb(41, 41, 41);
     text-align: start;
     text-indent: 0px;
+    @include breakpoint(xs) {
+      font-size: 0.9em;
+      line-height: 1.8em;
+    }
+    @include breakpoint(sm) {
+      font-size: 1em;
+      line-height: 1.8em;
+    }
   }
   .work-def-sm {
     color: $negro !important;
@@ -175,6 +183,7 @@ Material Design Card styles
     margin-top:  1.5em;
     @include breakpoint(xs) {
       font-size: 16px;
+      margin-top: 0px;
     }
   }
 
@@ -193,6 +202,14 @@ Material Design Card styles
       &:hover {
         color: $blanco;
       }
+    }
+    @include breakpoint(sm) {
+      font-size: 1em;
+      line-height: 1.8em;
+    }
+    @include breakpoint(xs) {
+      font-size: 0.9em;
+      line-height: 1.8em;
     }
   }
    .link {

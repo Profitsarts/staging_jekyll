@@ -238,6 +238,58 @@ nav#menu #menu-nav li.sfHover a {
   color: $negro !important;
 }
 /* ==================================================
+   BIO
+================================================== */
+.avatar {
+  img {
+    width: 100%;
+    height: auto;
+
+    @include breakpoint(md) {
+      width: 100%;
+      height: auto;
+    }
+    @include breakpoint(sm) {
+      width: 30%;
+      height: auto;
+      margin: 0 auto;
+
+    }
+    @include breakpoint(xs) {
+      width: 40%;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+}
+
+.clip-circle {
+  clip-path: circle(50% at center) !important;
+}
+
+.avatar-bio {
+
+}
+
+.avatar-headline {
+  margin-left: 1em;
+  margin-bottom: 1em;
+
+  @include breakpoint(sm) {
+    font-size:  1.1em;
+    line-height: 1.2m;
+
+  }
+  @include breakpoint(xs) {
+    font-size:  1.1em;
+    line-height: 1.2em;
+  }
+}
+
+
+
+
+/* ==================================================
    MAIN CAROUSEL
 ================================================== */
 .fullwidthbanner-container {

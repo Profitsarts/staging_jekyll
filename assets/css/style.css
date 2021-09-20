@@ -215,6 +215,43 @@ nav#menu #menu-nav li.sfHover a {
   color: #2A2A2A !important; }
 
 /* ==================================================
+   BIO
+================================================== */
+.avatar img {
+  width: 100%;
+  height: auto; }
+  @media (min-width: 768px) and (max-width: 991px) {
+    .avatar img {
+      width: 100%;
+      height: auto; } }
+  @media (min-width: 576px) and (max-width: 767px) {
+    .avatar img {
+      width: 30%;
+      height: auto;
+      margin: 0 auto; } }
+  @media (min-width: 320px) and (max-width: 575px) {
+    .avatar img {
+      width: 40%;
+      height: auto;
+      margin: 0 auto; } }
+
+.clip-circle {
+  -webkit-clip-path: circle(50% at center) !important;
+          clip-path: circle(50% at center) !important; }
+
+.avatar-headline {
+  margin-left: 1em;
+  margin-bottom: 1em; }
+  @media (min-width: 576px) and (max-width: 767px) {
+    .avatar-headline {
+      font-size: 1.1em;
+      line-height: 1.2m; } }
+  @media (min-width: 320px) and (max-width: 575px) {
+    .avatar-headline {
+      font-size: 1.1em;
+      line-height: 1.2em; } }
+
+/* ==================================================
    MAIN CAROUSEL
 ================================================== */
 .fullwidthbanner-container {

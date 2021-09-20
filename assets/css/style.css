@@ -599,7 +599,7 @@ Material Design Card styles
     line-height: 1.9em;
     vertical-align: baseline;
     letter-spacing: 0.4px;
-    word-spacing: 0px;
+    margin-top: 2em !important;
     font-weight: lighter;
     font-style: normal;
     font-variant: normal;
@@ -607,7 +607,8 @@ Material Design Card styles
     -webkit-text-decoration: #292929;
             text-decoration: #292929;
     text-align: start;
-    text-indent: 0px; }
+    text-indent: 0px;
+    word-spacing: 0px; }
     @media (min-width: 320px) and (max-width: 575px) {
       #portfolio-content .work-def, #portfolio-content .advice {
         font-size: 0.9em;

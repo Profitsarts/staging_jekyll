@@ -250,7 +250,7 @@ nav#menu #menu-nav li.sfHover a {
       height: auto;
     }
     @include breakpoint(sm) {
-      width: 30%;
+      width: 20%;
       height: auto;
       margin: 0 auto;
 
@@ -273,7 +273,7 @@ nav#menu #menu-nav li.sfHover a {
 
 .avatar-headline {
   margin-left: 1em;
-  margin-bottom: 1em;
+  margin-bottom: 0.4em;
 
   @include breakpoint(sm) {
     font-size:  1.1em;
@@ -285,7 +285,32 @@ nav#menu #menu-nav li.sfHover a {
     line-height: 1.2em;
   }
 }
+.quote {
+  margin: 0em,0em,0.9em,0em;
+  background: #eee;
+  padding: 0.7em;
+  border-radius: 0.5em;
+}
+.quote figcaption,
+.quote blockquote {
+  margin: 0.6em;
 
+  @include breakpoint(xs) {
+  padding:0;
+  }
+}
+figure.quote {
+  margin-top: 0;
+
+  @include breakpoint(lg) {
+    margin-top: 1em;
+
+  }
+  @include breakpoint(xl) {
+    margin-top: 2.5em;
+
+  }
+}
 
 
 

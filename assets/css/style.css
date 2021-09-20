@@ -226,7 +226,7 @@ nav#menu #menu-nav li.sfHover a {
       height: auto; } }
   @media (min-width: 576px) and (max-width: 767px) {
     .avatar img {
-      width: 30%;
+      width: 20%;
       height: auto;
       margin: 0 auto; } }
   @media (min-width: 320px) and (max-width: 575px) {
@@ -241,7 +241,7 @@ nav#menu #menu-nav li.sfHover a {
 
 .avatar-headline {
   margin-left: 1em;
-  margin-bottom: 1em; }
+  margin-bottom: 0.4em; }
   @media (min-width: 576px) and (max-width: 767px) {
     .avatar-headline {
       font-size: 1.1em;
@@ -250,6 +250,29 @@ nav#menu #menu-nav li.sfHover a {
     .avatar-headline {
       font-size: 1.1em;
       line-height: 1.2em; } }
+
+.quote {
+  margin: 0em,0em,0.9em,0em;
+  background: #eee;
+  padding: 0.7em;
+  border-radius: 0.5em; }
+
+.quote figcaption,
+.quote blockquote {
+  margin: 0.6em; }
+  @media (min-width: 320px) and (max-width: 575px) {
+    .quote figcaption,
+    .quote blockquote {
+      padding: 0; } }
+
+figure.quote {
+  margin-top: 0; }
+  @media (min-width: 992px) and (max-width: 1199px) {
+    figure.quote {
+      margin-top: 1em; } }
+  @media (min-width: 1200px) {
+    figure.quote {
+      margin-top: 2.5em; } }
 
 /* ==================================================
    MAIN CAROUSEL

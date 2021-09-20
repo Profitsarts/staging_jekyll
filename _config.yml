@@ -3,7 +3,7 @@
 title: Profits | arts'n'grafx
 email: profitsarts@gmail.com
 description:  # this means to ignore newlines until "baseurl:"
-   Luis SIerra, Senior Digital Product Designer.
+  Functional and tasty designs. UX/UI, Web, Print, Layout... You name it... You bet!
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://staging.profitsarts.com/" # the base hostname & protocol for your site
 keep_files: [ "vendor" ]
@@ -22,7 +22,7 @@ collections:
 #     include:
 #         _sass_partial.scss
 
-exclude: [node_modules, gulpfile.js, package.json]
+exclude: ["node_modules", "gulpfile.js", "package.json"]
 # keep_files: ['_site/assets/']
 # Build settings
 markdown: kramdown

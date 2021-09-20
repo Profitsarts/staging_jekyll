@@ -13,7 +13,7 @@
 // 	    line-height: 1.2;
 // 		padding: 60px 0;
 // 		margin-bottom: 0;
-// 		text-align: center;
+// 		text-align: center;9
 // 			span{
 // 				color:$salmon;
 // 			}
@@ -125,7 +125,7 @@ Material Design Card styles
     line-height: 1.9em;
     vertical-align: baseline;
     letter-spacing: 0.4px;
-    word-spacing: 0px;
+    margin-top: 2em !important;
     font-weight: lighter;
     font-style: normal;
     font-variant: normal;
@@ -133,6 +133,7 @@ Material Design Card styles
     text-decoration: rgb(41, 41, 41);
     text-align: start;
     text-indent: 0px;
+    word-spacing: 0px;
     @include breakpoint(xs) {
       font-size: 0.9em;
       line-height: 1.8em;
